@@ -30,7 +30,7 @@ my @EXPORT_OK = qw(concat_overlap);
 
 
 sub concat_overlap{
-    my ($a, $b, $c) = @_;
+    my ($a, $b, $between) = @_;
     my $last = 0;
     my $la = length($a);
     my $lb = length($b);
@@ -51,7 +51,7 @@ sub concat_overlap{
 
         }
     }
-    return $a . ($c // "") . $b;
+    return $a . ($between // "") . $b;
 }
 
 # say concat_overlap("abcdef", "defg");  # "abcdefg"
