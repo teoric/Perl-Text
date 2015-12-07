@@ -3,17 +3,20 @@
 #
 #        Package ConcatOverlap
 #
-#  DESCRIPTION: defines concat_overlap($a, $b)
+#  DESCRIPTION: defines concat_overlap($a, $b, $between)
 #               which concatenates strings $a and $b
 #               taking avoiding an overlap
 #               at the end of $a and the beginning of $b
+#
+#               If $between is given, it is inserted if $a and $b do
+#               NOT overlap.
 #
 #       AUTHOR: Bernhard Fisseni (bfi), bernhard.fisseni@uni-due.de
 # ORGANIZATION: Uni Duisburg-Essen
 #      VERSION: 1.0
 #      CREATED: 2015-12-07, 13:26:51 (CET)
 #     REVISION: ---
-#  Last Change: 2015-12-07, 14:29:01 CET
+#  Last Change: 2015-12-07, 14:46:54 CET
 #===============================================================================
 
 use utf8;
@@ -27,7 +30,7 @@ my @EXPORT_OK = qw(concat_overlap);
 
 
 sub concat_overlap{
-    my ($a, $b) = @_;
+    my ($a, $b, $c) = @_;
     my $last = 0;
     my $la = length($a);
     my $lb = length($b);
@@ -48,13 +51,13 @@ sub concat_overlap{
 
         }
     }
-    return $a . $b;
+    return $a . ($c // "") . $b;
 }
 
-# say concat_overlap("abcdef", "defg");  # "abcdefg"
-# say concat_overlap("abcd", "defg");    # "abcdefg"
-# say concat_overlap("abc", "defg");     # "abcdefg"
-# say concat_overlap("abcd", "defg");    # "abcdefg"
-# say concat_overlap("abcdx", "defg");   # "abcdxdef"
+say concat_overlap("abcdef", "defg");  # "abcdefg"
+say concat_overlap("abcd", "defg");    # "abcdefg"
+say concat_overlap("abc", "defg");     # "abcdefg"
+say concat_overlap("abcd", "defg");    # "abcdefg"
+say concat_overlap("abcdx", "defg");   # "abcdxdef"
 
 1;
