@@ -16,7 +16,7 @@
 #      VERSION: 1.0
 #      CREATED: 2015-12-07, 13:26:51 (CET)
 #     REVISION: ---
-#  Last Change: 2015-12-07, 14:46:54 CET
+#  Last Change: 2015-12-07, 14:47:28 CET
 #===============================================================================
 
 use utf8;
@@ -54,10 +54,10 @@ sub concat_overlap{
     return $a . ($c // "") . $b;
 }
 
-say concat_overlap("abcdef", "defg");  # "abcdefg"
-say concat_overlap("abcd", "defg");    # "abcdefg"
-say concat_overlap("abc", "defg");     # "abcdefg"
-say concat_overlap("abcd", "defg");    # "abcdefg"
-say concat_overlap("abcdx", "defg");   # "abcdxdef"
+# say concat_overlap("abcdef", "defg");  # "abcdefg"
+# say concat_overlap("abcd", "defg");    # "abcdefg"
+# say concat_overlap("abc", "defg");     # "abcdefg"
+# say concat_overlap("abcd", "defg");    # "abcdefg"
+# say concat_overlap("abcdx", "defg");   # "abcdxdef"
 
 1;
